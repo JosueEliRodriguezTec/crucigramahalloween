@@ -1,0 +1,238 @@
+* {
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+
+    box-sizing: border-box;
+
+}
+
+
+html,
+body {
+
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    min-height: 100%;
+
+}
+
+
+body {
+
+    min-height: 100dvh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: #000;
+
+    overflow: hidden;
+
+}
+
+.portada {
+
+    position: relative;
+
+    width: 100%;
+
+    max-width: 430px;
+
+    height: 100dvh;
+
+    background-image: url("img/portadahallowen.png");
+
+    background-repeat: no-repeat;
+
+    background-position: center;
+
+    background-size: 100% 100%;
+
+}
+
+
+/* =========================================
+   CONTENEDOR INICIAL
+========================================= */
+
+#inicio {
+
+    position: absolute;
+
+    bottom: 7%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 90%;
+
+    max-width: 380px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+
+/* =========================================
+   BOTONES
+========================================= */
+
+.loginBtn,
+.playBtn {
+
+    width: 85%;
+
+    max-width: 330px;
+
+    padding: 16px 20px;
+
+    margin: 8px 0;
+
+    border: none;
+
+    border-radius: 18px;
+
+    font-family: "Nunito", sans-serif;
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+    text-decoration: none;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.35);
+
+    transition:
+        transform .2s ease,
+        opacity .2s ease;
+
+}
+
+
+/* LOGIN */
+
+.loginBtn {
+
+    background: #007bff;
+
+    color: white;
+
+}
+
+
+/* JUGAR */
+
+.playBtn {
+
+    background: #ff7518;
+
+    color: white;
+
+}
+
+
+/* BOTÓN BLOQUEADO */
+
+.playBtn:disabled {
+
+    opacity: .65;
+
+    cursor: not-allowed;
+
+    filter: grayscale(.4);
+
+}
+
+
+/* EFECTO */
+
+.loginBtn:hover,
+.playBtn:hover:not(:disabled) {
+
+    transform: scale(1.03);
+
+}
+
+
+.loginBtn:active,
+.playBtn:active:not(:disabled) {
+
+    transform: scale(.97);
+
+}
+
+
+/* =========================================
+   CRÉDITOS
+========================================= */
+
+.creditos {
+
+    position: fixed;
+
+    bottom: 8px;
+
+    right: 10px;
+
+    font-size: 10px;
+
+    color: white;
+
+    opacity: .45;
+
+    z-index: 9999;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
+
+@media (max-width: 768px) {
+
+    .portada {
+
+        background-position: center center;
+
+    }
+
+    #inicio {
+
+        bottom: 5%;
+
+    }
+
+    .loginBtn,
+    .playBtn {
+
+        font-size: 18px;
+
+        padding: 15px;
+
+    }
+
+}

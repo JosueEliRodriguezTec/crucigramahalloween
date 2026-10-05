@@ -1,0 +1,510 @@
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+body{
+
+    background:#000;
+
+    font-family:"Nunito",sans-serif;
+
+    display:flex;
+
+    justify-content:center;
+
+    min-height:100dvh;
+
+}
+
+.app{
+
+    width:100%;
+
+    max-width:430px;
+
+    height:100dvh;
+
+    background:
+    linear-gradient(
+        #25123f,
+        #130a23
+    );
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+}
+
+
+/* =========================
+   ENCABEZADO
+========================= */
+
+header{
+
+    height:10%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:white;
+
+    flex-shrink:0;
+
+}
+
+header h1{
+
+    font-size:24px;
+
+}
+
+main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    min-height:0;
+}
+/* =========================
+   ZONA DEL CRUCIGRAMA
+========================= */
+
+.tablero{
+
+    height:55%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    padding-top:15px;
+
+    flex-shrink:0;
+
+}
+
+
+/* =========================
+   CUADRÍCULA
+========================= */
+
+.grid {
+
+    position:relative;
+
+    width:224px;
+
+    height:352px;
+
+}
+.celda,
+.vacio{
+
+    width:44px;
+
+    height:44px;
+
+}
+
+.celda{
+
+    background:white;
+
+    border-radius:6px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    font-weight:800;
+
+    color:#333;
+
+    font-size:12px;
+
+    padding-top:2px;
+
+}
+
+.numero{
+
+    color:#ff7518;
+
+}
+
+.vacio{
+
+    background:transparent;
+
+}
+
+
+/* =========================
+   ZONA DE ACCIONES
+========================= */
+
+.acciones{
+
+    height:10%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-shrink:0;
+
+}
+
+#btnPista{
+
+    background:#ff7518;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 24px;
+
+    border-radius:15px;
+
+    font-family:"Nunito",sans-serif;
+
+    font-weight:800;
+
+    font-size:15px;
+
+}
+
+
+/* =========================
+   ZONA DE LETRAS
+========================= */
+
+.letras{
+
+    height:45%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    padding-bottom:20px;
+
+    position:relative;
+
+    flex-shrink:0;
+
+}
+
+
+/* =========================
+   CÍRCULO
+========================= */
+
+.circulo{
+
+    position:relative;
+
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+
+    border:3px solid rgba(255,255,255,.15);
+
+    flex-shrink:0;
+
+}
+
+
+/* =========================
+   BOTONES DE LETRAS
+========================= */
+
+.circulo button{
+
+    position:absolute;
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:#f2f2f2;
+
+    font-family:"Nunito",sans-serif;
+
+    font-size:21px;
+
+    font-weight:800;
+
+    box-shadow:
+    0 4px 8px rgba(0,0,0,.3);
+
+}
+
+
+/* A */
+
+.circulo button:nth-child(1){
+
+    top:5px;
+
+    left:50%;
+
+    transform:
+    translateX(-50%);
+
+}
+
+
+/* R */
+
+.circulo button:nth-child(2){
+
+    top:48px;
+
+    left:8px;
+
+}
+
+
+/* D */
+
+.circulo button:nth-child(3){
+
+    top:48px;
+
+    right:8px;
+
+}
+
+
+/* C */
+
+.circulo button:nth-child(4){
+
+    top:50%;
+
+    left:50%;
+
+    transform:
+    translate(-50%,-50%);
+
+}
+
+
+/* U */
+
+.circulo button:nth-child(5){
+
+    bottom:8px;
+
+    left:30px;
+
+}
+
+
+/* L */
+
+.circulo button:nth-child(6){
+
+    bottom:8px;
+
+    right:30px;
+
+}
+
+
+/* =========================
+   POPUP DE PISTA
+========================= */
+
+#popupPista{
+
+    position:fixed;
+
+    top:15px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:85%;
+    max-width:350px;
+
+    background:rgba(43,43,43,.82);
+
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+
+    color:white;
+
+    padding:18px 20px;
+
+    border-radius:15px;
+
+    display:none;
+
+    z-index:999;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.35);
+
+    border:1px solid rgba(255,117,24,.65);
+
+}
+
+.casilla {
+
+    position:absolute;
+
+    width:30px;
+    height:30px;
+
+    background:white;
+
+    border-radius:6px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    padding-top:2px;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    color:#333;
+
+}
+
+/* =========================
+   CASILLAS CON PISTA
+========================= */
+
+/* =========================
+   CASILLAS SELECCIONABLES
+========================= */
+
+.casilla.pista{
+
+    color:#ff7518;
+
+    border:2px solid #ff7518;
+
+    box-shadow:
+        0 0 8px rgba(255,117,24,.65);
+
+    cursor:pointer;
+
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease;
+
+}
+
+
+/* AL PASAR EL MOUSE */
+
+.casilla.pista:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+        0 0 16px rgba(255,117,24,1);
+
+}
+
+
+/* AL TOCAR */
+
+.casilla.pista:active{
+
+    transform:scale(.90);
+
+    box-shadow:
+        0 0 14px rgba(255,117,24,.9);
+
+}
+
+
+/* =========================
+   PANEL DE PISTA
+========================= */
+
+
+
+#popupPista h3{
+
+    color:#ff7518;
+
+    font-size:20px;
+
+    margin-bottom:8px;
+
+}
+
+#popupPista p{
+
+    font-size:16px;
+
+    line-height:1.4;
+
+}
+
+
+/* BOTÓN CERRAR */
+
+#cerrarPista{
+
+    position:absolute;
+
+    top:6px;
+    right:10px;
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:25px;
+
+    cursor:pointer;
+
+}
+
+.casilla.rellena {
+
+    color:#25123f;
+
+    font-size:20px;
+
+    padding-top:5px;
+
+}
