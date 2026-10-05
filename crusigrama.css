@@ -21,25 +21,15 @@ body{
 }
 
 .app{
-
+    position:relative;
     width:100%;
-
     max-width:430px;
-
     height:100dvh;
-
-    background:
-    linear-gradient(
-        #25123f,
-        #130a23
-    );
-
-    display:flex;
-
-    flex-direction:column;
-
     overflow:hidden;
 
+    background:
+        linear-gradient(rgba(19,10,35,.75),rgba(19,10,35,.85)),
+        url("TU-IMAGEN.jpg") center/cover no-repeat;
 }
 
 
@@ -80,19 +70,13 @@ main{
 ========================= */
 
 .tablero{
-
-    height:55%;
+    position:absolute;
+    top:35px;
+    left:0;
+    right:0;
 
     display:flex;
-
     justify-content:center;
-
-    align-items:flex-start;
-
-    padding-top:15px;
-
-    flex-shrink:0;
-
 }
 
 
@@ -101,13 +85,9 @@ main{
 ========================= */
 
 .grid {
-
     position:relative;
-
-    width:224px;
-
-    height:352px;
-
+    width:280px;
+    height:440px;
 }
 .celda,
 .vacio{
@@ -197,74 +177,58 @@ main{
 ========================= */
 
 .letras{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:10px;
 
-    height:45%;
+    height:120px;
 
     display:flex;
-
     justify-content:center;
+    align-items:center;
 
-    align-items:flex-end;
+    padding:0;
+    margin:0;
 
-    padding-bottom:20px;
-
-    position:relative;
-
-    flex-shrink:0;
-
+    z-index:20;
 }
-
-
-/* =========================
-   CÍRCULO
-========================= */
-
 .circulo{
-
     position:relative;
-
-    width:180px;
-
-    height:180px;
+    width:120px;
+    height:120px;
 
     border-radius:50%;
-
     border:3px solid rgba(255,255,255,.15);
 
     flex-shrink:0;
 
+    z-index:21;
 }
 
-
-/* =========================
-   BOTONES DE LETRAS
-========================= */
-
 .circulo button{
-
     position:absolute;
 
-    width:48px;
-
-    height:48px;
+    width:34px;
+    height:34px;
 
     border-radius:50%;
-
     border:none;
 
     background:#f2f2f2;
 
     font-family:"Nunito",sans-serif;
-
-    font-size:21px;
-
+    font-size:17px;
     font-weight:800;
 
-    box-shadow:
-    0 4px 8px rgba(0,0,0,.3);
+    box-shadow:0 4px 8px rgba(0,0,0,.3);
 
+    cursor:pointer;
+
+    pointer-events:auto;
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
 }
-
 
 /* A */
 
@@ -345,12 +309,10 @@ main{
 #popupPista{
 
     position:fixed;
-
-    top:15px;
+    top:50%;
     left:50%;
-
-    transform:translateX(-50%);
-
+    transform:translate(-50%,-50%);
+    
     width:85%;
     max-width:350px;
 
@@ -377,30 +339,25 @@ main{
 }
 
 .casilla {
-
     position:absolute;
 
-    width:30px;
-    height:30px;
+    width:36px;
+    height:36px;
 
     background:white;
 
     border-radius:6px;
 
     display:flex;
-
     justify-content:center;
-
     align-items:flex-start;
 
     padding-top:2px;
 
-    font-size:11px;
-
+    font-size:12px;
     font-weight:800;
 
     color:#333;
-
 }
 
 /* =========================
@@ -499,12 +456,54 @@ main{
 
 }
 
-.casilla.rellena {
+.casilla.rellena { 
 
     color:#25123f;
 
-    font-size:20px;
+    font-size:21px;
 
-    padding-top:5px;
+    padding-top:4px;
 
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    overscroll-behavior:none;
+    touch-action:manipulation;
+}
+
+body{
+    position:fixed;
+    inset:0;
+}
+
+.app{
+    position:relative;
+
+    width:100%;
+    max-width:430px;
+    height:100dvh;
+    max-height:100dvh;
+
+    background:
+    linear-gradient(
+        #25123f,
+        #130a23
+    );
+
+    display:flex;
+    flex-direction:column;
+
+    overflow:hidden;
+}
+
+button,
+.casilla{
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
 }
