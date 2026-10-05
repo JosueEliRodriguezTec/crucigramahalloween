@@ -203,7 +203,7 @@ function mostrarLetras(palabra) {
                 (360 / cantidad) *
                 indice - 90;
 
-            const radio = 30;
+            const radio = 47;
 
 
             const x =
