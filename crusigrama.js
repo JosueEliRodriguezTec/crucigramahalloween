@@ -39,6 +39,26 @@ const palabras = {
 
 };
 
+const ordenLetras = {
+
+    1: ["A", "L", "D", "U", "R", "C", "A"],
+
+    2: ["E", "P", "O"],
+
+    3: ["E", "H", "Y", "D"],
+
+    4: ["T", "G", "C", "H", "I", "O"],
+
+    5: ["R", "A", "I", "C", "E", "R"],
+
+    6: ["T", "L", "E", "R", "C", "E"],
+
+    7: ["V", "E", "R", "N", "A"],
+
+    8: ["G", "I", "K", "N"]
+
+};
+
 
 const mapa = {
 
@@ -258,16 +278,18 @@ function mostrarLetras(palabra) {
 
     posicionActual = 0;
 
+    const letrasDesordenadas =
+        ordenLetras[numeroActual];
+
     const cantidad =
-        palabra.length;
+        letrasDesordenadas.length;
 
 
-    palabra.split("").forEach(
+    letrasDesordenadas.forEach(
         (letra, indice) => {
 
             const boton =
                 document.createElement("button");
-
 
             boton.textContent =
                 letra;
@@ -338,9 +360,7 @@ function mostrarLetras(palabra) {
 function colocarLetra(letra) {
 
     if (!palabraActual) {
-
         return;
-
     }
 
 
@@ -361,16 +381,29 @@ function colocarLetra(letra) {
 
 
     // =================================
-    // LA LETRA NO ES CORRECTA
+    // LETRA INCORRECTA
     // =================================
 
     if (
         letra !== letraCorrecta
     ) {
 
+        circulo.classList.add(
+            "error"
+        );
+
         return;
 
     }
+
+
+    // =================================
+    // LETRA CORRECTA
+    // =================================
+
+    circulo.classList.remove(
+        "error"
+    );
 
 
     const posicion =
@@ -380,9 +413,7 @@ function colocarLetra(letra) {
 
 
     if (!posicion) {
-
         return;
-
     }
 
 
@@ -393,10 +424,6 @@ function colocarLetra(letra) {
     const left =
         posicion[1];
 
-
-    // =================================
-    // BUSCAR LA CASILLA
-    // =================================
 
     const casillas =
         document.querySelectorAll(
