@@ -505,3 +505,54 @@ function colocarLetra(
     }
 
 }
+
+
+
+// =====================================
+// BLOQUEAR ZOOM Y GESTOS DE ZOOM
+// =====================================
+
+// Bloquear pinch zoom
+document.addEventListener(
+    "touchmove",
+    function(event) {
+
+        if (event.touches.length > 1) {
+
+            event.preventDefault();
+
+        }
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+// Bloquear doble toque para hacer zoom
+let ultimoToque = 0;
+
+document.addEventListener(
+    "touchend",
+    function(event) {
+
+        const ahora =
+            Date.now();
+
+        if (
+            ahora - ultimoToque <= 300
+        ) {
+
+            event.preventDefault();
+
+        }
+
+        ultimoToque =
+            ahora;
+
+    },
+    {
+        passive: false
+    }
+);
