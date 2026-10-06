@@ -20,17 +20,7 @@ body{
 
 }
 
-.app{
-    position:relative;
-    width:100%;
-    max-width:430px;
-    height:100dvh;
-    overflow:hidden;
 
-    background:
-        linear-gradient(rgba(19,10,35,.75),rgba(19,10,35,.85)),
-        url("img/fondo.png") center/cover no-repeat;
-}
 
 
 /* =========================
@@ -492,10 +482,11 @@ body{
     max-height:100dvh;
 
     background:
-    linear-gradient(
-        #25123f,
-        #130a23
-    );
+        linear-gradient(
+            rgba(19,10,35,.55),
+            rgba(19,10,35,.70)
+        ),
+        url("img/fondo.png") center/cover no-repeat;
 
     display:flex;
     flex-direction:column;
