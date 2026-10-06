@@ -124,7 +124,7 @@ btnIniciarJuego.addEventListener(
 
 
         window.location.href =
-            "crucigrama.html";
+            "crusigrama.html";
 
     }
 );
