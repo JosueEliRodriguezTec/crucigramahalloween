@@ -226,6 +226,23 @@ main{
 
 }
 
+.circulo.error{
+
+    border-color:#ff2b2b;
+
+    box-shadow:
+        0 0 18px rgba(255,43,43,.85);
+
+}
+
+.circulo.error button{
+
+    background:#ff2b2b;
+
+    color:white;
+
+}
+
 .circulo button{
 
     position:absolute;
