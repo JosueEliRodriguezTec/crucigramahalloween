@@ -29,7 +29,7 @@ body{
 
     background:
         linear-gradient(rgba(19,10,35,.75),rgba(19,10,35,.85)),
-        url("TU-IMAGEN.jpg") center/cover no-repeat;
+        url("img/fondo.png") center/cover no-repeat;
 }
 
 
