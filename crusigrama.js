@@ -66,120 +66,80 @@ const mapa = {
     1: [
 
         [200,0],
-
         [200,40],
-
         [200,80],
-
         [200,120],
-
         [200,160],
-
         [200,200],
-
         [200,240]
 
     ],
 
-
     2: [
 
         [40,80],
-
         [40,120],
-
         [40,160]
 
     ],
 
-
     3: [
 
         [120,120],
-
         [120,160],
-
         [120,200],
-
         [120,240]
 
     ],
 
-
     4: [
 
         [0,120],
-
         [40,120],
-
         [80,120],
-
         [120,120],
-
         [160,120],
-
         [200,120]
 
     ],
 
-
     5: [
 
         [120,40],
-
         [160,40],
-
         [200,40],
-
         [240,40],
-
         [280,40],
-
         [320,40]
 
     ],
 
-
     6: [
 
         [200,200],
-
         [240,200],
-
         [280,200],
-
         [320,200],
-
         [360,200],
-
         [400,200]
 
     ],
 
-
     7: [
 
         [360,80],
-
         [360,120],
-
         [360,160],
-
         [360,200],
-
         [360,240]
 
     ],
 
-
     8: [
 
         [280,0],
-
         [280,40],
-
         [280,80],
-
         [280,120]
 
     ]
@@ -188,27 +148,63 @@ const mapa = {
 
 
 const casillasPista =
-    document.querySelectorAll(".casilla.pista");
+    document.querySelectorAll(
+        ".casilla.pista"
+    );
 
 
 const popup =
-    document.getElementById("popupPista");
+    document.getElementById(
+        "popupPista"
+    );
 
 
 const titulo =
-    document.getElementById("tituloPista");
+    document.getElementById(
+        "tituloPista"
+    );
 
 
 const texto =
-    document.getElementById("textoPista");
+    document.getElementById(
+        "textoPista"
+    );
 
 
 const cerrar =
-    document.getElementById("cerrarPista");
+    document.getElementById(
+        "cerrarPista"
+    );
 
 
 const circulo =
-    document.getElementById("circuloLetras");
+    document.getElementById(
+        "circuloLetras"
+    );
+
+
+// =====================================
+// MENSAJE FINAL
+// =====================================
+
+const mensajeFinal =
+    document.getElementById(
+        "mensajeFinal"
+    );
+
+
+const btnEncuesta =
+    document.getElementById(
+        "btnEncuesta"
+    );
+
+
+// =====================================
+// PALABRAS COMPLETADAS
+// =====================================
+
+const palabrasCompletadas =
+    new Set();
 
 
 let palabraActual = "";
@@ -222,55 +218,73 @@ let posicionActual = 0;
 // ABRIR PISTA
 // =====================================
 
-casillasPista.forEach(casilla => {
+casillasPista.forEach(
+    casilla => {
 
-    casilla.addEventListener("click", () => {
+        casilla.addEventListener(
+            "click",
+            () => {
 
-        const numero =
-            casilla.dataset.pista;
+                const numero =
+                    casilla.dataset.pista;
 
-        numeroActual = numero;
 
-        titulo.textContent =
-            "Pista " + numero;
+                numeroActual =
+                    numero;
 
-        texto.textContent =
-            pistas[numero];
 
-        popup.style.display =
-            "block";
+                titulo.textContent =
+                    "Pista " + numero;
 
-        mostrarLetras(
-            palabras[numero]
+
+                texto.textContent =
+                    pistas[numero];
+
+
+                popup.style.display =
+                    "block";
+
+
+                mostrarLetras(
+                    palabras[numero]
+                );
+
+            }
         );
 
-    });
-
-});
+    }
+);
 
 
 // =====================================
 // CERRAR PISTA
 // =====================================
 
-cerrar.addEventListener("click", () => {
+cerrar.addEventListener(
+    "click",
+    () => {
 
-    popup.style.display =
-        "none";
+        popup.style.display =
+            "none";
 
-});
+    }
+);
 
 
 // =====================================
 // MOSTRAR LETRAS
 // =====================================
 
-function mostrarLetras(palabra) {
+function mostrarLetras(
+    palabra
+) {
 
     circulo.innerHTML = "";
 
+
     palabraActual =
         palabra;
+
 
     posicionActual =
         0;
@@ -296,10 +310,6 @@ function mostrarLetras(palabra) {
             boton.textContent =
                 letra;
 
-
-            // =================================
-            // SELECCIONAR LETRA
-            // =================================
 
             boton.addEventListener(
                 "click",
@@ -502,10 +512,60 @@ function colocarLetra(
             palabraActual
         );
 
+
+        // Guardar palabra completada
+
+        palabrasCompletadas.add(
+            numeroActual
+        );
+
+
+        // =================================
+        // COMPROBAR LAS 8 PALABRAS
+        // =================================
+
+        comprobarCrucigrama();
+
     }
 
 }
 
+
+// =====================================
+// COMPROBAR SI TODO ESTÁ COMPLETO
+// =====================================
+
+function comprobarCrucigrama() {
+
+    if (
+        palabrasCompletadas.size === 8
+    ) {
+
+        popup.style.display =
+            "none";
+
+
+        mensajeFinal.style.display =
+            "flex";
+
+    }
+
+}
+
+
+// =====================================
+// BOTÓN DE ENCUESTA
+// =====================================
+
+btnEncuesta.addEventListener(
+    "click",
+    () => {
+
+        window.location.href =
+            "https://itesm.co1.qualtrics.com/jfe/form/SV_1MP6ja0wfu9JlnU?IDExp=225";
+
+    }
+);
 
 
 // =====================================
@@ -513,11 +573,14 @@ function colocarLetra(
 // =====================================
 
 // Bloquear pinch zoom
+
 document.addEventListener(
     "touchmove",
     function(event) {
 
-        if (event.touches.length > 1) {
+        if (
+            event.touches.length > 1
+        ) {
 
             event.preventDefault();
 
@@ -531,7 +594,9 @@ document.addEventListener(
 
 
 // Bloquear doble toque para hacer zoom
+
 let ultimoToque = 0;
+
 
 document.addEventListener(
     "touchend",
@@ -540,6 +605,7 @@ document.addEventListener(
         const ahora =
             Date.now();
 
+
         if (
             ahora - ultimoToque <= 300
         ) {
@@ -547,6 +613,7 @@ document.addEventListener(
             event.preventDefault();
 
         }
+
 
         ultimoToque =
             ahora;
