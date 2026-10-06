@@ -586,3 +586,113 @@ button,
     -webkit-tap-highlight-color:transparent;
 
 }
+
+/* =========================
+   MENSAJE FINAL
+========================= */
+
+#mensajeFinal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.75);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    z-index:2000;
+
+}
+
+
+.mensajeFinalContenido{
+
+    width:90%;
+
+    max-width:350px;
+
+    background:rgba(43,43,43,.95);
+
+    backdrop-filter:blur(10px);
+
+    -webkit-backdrop-filter:blur(10px);
+
+    border:2px solid #ff7518;
+
+    border-radius:20px;
+
+    padding:28px 22px;
+
+    text-align:center;
+
+    color:white;
+
+    box-shadow:
+        0 0 30px rgba(255,117,24,.45);
+
+}
+
+
+.mensajeFinalContenido h2{
+
+    color:#ff7518;
+
+    font-size:25px;
+
+    margin-bottom:15px;
+
+}
+
+
+.mensajeFinalContenido p{
+
+    font-size:16px;
+
+    line-height:1.4;
+
+    margin-bottom:8px;
+
+}
+
+
+#btnEncuesta{
+
+    margin-top:18px;
+
+    background:#ff7518;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 24px;
+
+    border-radius:15px;
+
+    font-family:"Nunito",sans-serif;
+
+    font-size:16px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    touch-action:manipulation;
+
+    -webkit-tap-highlight-color:transparent;
+
+}
+
+
+#btnEncuesta:active{
+
+    transform:scale(.95);
+
+}
