@@ -21,8 +21,6 @@ body{
 }
 
 
-
-
 /* =========================
    ENCABEZADO
 ========================= */
@@ -50,23 +48,36 @@ header h1{
 }
 
 main{
+
     flex:1;
+
     display:flex;
+
     flex-direction:column;
+
     min-height:0;
+
 }
+
+
 /* =========================
    ZONA DEL CRUCIGRAMA
 ========================= */
 
 .tablero{
+
     position:absolute;
+
     top:35px;
+
     left:0;
+
     right:0;
 
     display:flex;
+
     justify-content:center;
+
 }
 
 
@@ -74,11 +85,16 @@ main{
    CUADRÍCULA
 ========================= */
 
-.grid {
+.grid{
+
     position:relative;
+
     width:280px;
+
     height:440px;
+
 }
+
 .celda,
 .vacio{
 
@@ -167,49 +183,67 @@ main{
 ========================= */
 
 .letras{
+
     position:absolute;
+
     left:0;
+
     right:0;
+
     bottom:35px;
 
     height:155px;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
     padding:0;
+
     margin:0;
 
     z-index:20;
+
 }
+
 .circulo{
+
     position:relative;
 
     width:155px;
+
     height:155px;
 
     border-radius:50%;
+
     border:3px solid rgba(255,255,255,.15);
 
     flex-shrink:0;
 
     z-index:21;
+
 }
 
 .circulo button{
+
     position:absolute;
 
     width:40px;
+
     height:40px;
 
     border-radius:50%;
+
     border:none;
 
     background:#f2f2f2;
 
     font-family:"Nunito",sans-serif;
+
     font-size:20px;
+
     font-weight:800;
 
     box-shadow:0 4px 8px rgba(0,0,0,.3);
@@ -217,11 +251,17 @@ main{
     cursor:pointer;
 
     pointer-events:auto;
+
     touch-action:manipulation;
+
     -webkit-tap-highlight-color:transparent;
+
 }
 
-/* A */
+
+/* =========================
+   POSICIONES DEL CÍRCULO
+========================= */
 
 .circulo button:nth-child(1){
 
@@ -234,9 +274,6 @@ main{
 
 }
 
-
-/* R */
-
 .circulo button:nth-child(2){
 
     top:48px;
@@ -245,9 +282,6 @@ main{
 
 }
 
-
-/* D */
-
 .circulo button:nth-child(3){
 
     top:48px;
@@ -255,9 +289,6 @@ main{
     right:8px;
 
 }
-
-
-/* C */
 
 .circulo button:nth-child(4){
 
@@ -270,9 +301,6 @@ main{
 
 }
 
-
-/* U */
-
 .circulo button:nth-child(5){
 
     bottom:8px;
@@ -280,9 +308,6 @@ main{
     left:30px;
 
 }
-
-
-/* L */
 
 .circulo button:nth-child(6){
 
@@ -302,16 +327,19 @@ main{
     position:fixed;
 
     top:67%;
+
     left:50%;
 
     transform:translate(-50%,-50%);
 
     width:85%;
+
     max-width:350px;
 
     background:rgba(43,43,43,.82);
 
     backdrop-filter:blur(8px);
+
     -webkit-backdrop-filter:blur(8px);
 
     color:white;
@@ -331,10 +359,13 @@ main{
 
 }
 
-.casilla {
+
+.casilla{
+
     position:absolute;
 
     width:36px;
+
     height:36px;
 
     background:white;
@@ -342,20 +373,21 @@ main{
     border-radius:6px;
 
     display:flex;
+
     justify-content:center;
+
     align-items:flex-start;
 
     padding-top:2px;
 
     font-size:12px;
+
     font-weight:800;
 
     color:#333;
+
 }
 
-/* =========================
-   CASILLAS CON PISTA
-========================= */
 
 /* =========================
    CASILLAS SELECCIONABLES
@@ -378,9 +410,6 @@ main{
 
 }
 
-
-/* AL PASAR EL MOUSE */
-
 .casilla.pista:hover{
 
     transform:scale(1.05);
@@ -389,9 +418,6 @@ main{
         0 0 16px rgba(255,117,24,1);
 
 }
-
-
-/* AL TOCAR */
 
 .casilla.pista:active{
 
@@ -406,8 +432,6 @@ main{
 /* =========================
    PANEL DE PISTA
 ========================= */
-
-
 
 #popupPista h3{
 
@@ -428,13 +452,16 @@ main{
 }
 
 
-/* BOTÓN CERRAR */
+/* =========================
+   BOTÓN CERRAR
+========================= */
 
 #cerrarPista{
 
     position:absolute;
 
     top:6px;
+
     right:10px;
 
     background:none;
@@ -449,7 +476,12 @@ main{
 
 }
 
-.casilla.rellena { 
+
+/* =========================
+   LETRAS COLOCADAS
+========================= */
+
+.casilla.rellena{
 
     color:#25123f;
 
@@ -459,45 +491,81 @@ main{
 
 }
 
+
+/* =========================
+   BLOQUEO DE SCROLL / ZOOM
+========================= */
+
 html,
 body{
+
     width:100%;
+
     height:100%;
+
     margin:0;
+
     padding:0;
+
     overflow:hidden;
+
     overscroll-behavior:none;
+
     touch-action:manipulation;
+
 }
 
 body{
+
     position:fixed;
+
     inset:0;
+
 }
 
+
+/* =========================
+   APP
+========================= */
+
 .app{
+
     position:relative;
 
     width:100%;
+
     max-width:430px;
+
     height:100dvh;
+
     max-height:100dvh;
 
     background:
+
         linear-gradient(
+
             rgba(19,10,35,.55),
+
             rgba(19,10,35,.70)
+
         ),
+
         url("img/fondo.png") center/cover no-repeat;
 
     display:flex;
+
     flex-direction:column;
 
     overflow:hidden;
+
 }
+
 
 button,
 .casilla{
+
     touch-action:manipulation;
+
     -webkit-tap-highlight-color:transparent;
+
 }
