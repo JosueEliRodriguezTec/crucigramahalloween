@@ -39,6 +39,7 @@ const palabras = {
 
 };
 
+
 const ordenLetras = {
 
     1: ["A", "L", "D", "U", "R", "C", "A"],
@@ -171,13 +172,6 @@ const mapa = {
     ],
 
 
-    /* =========================
-       8. KING
-       K I N G
-         ↑
-       I compartida con CARRIE
-    ========================== */
-
     8: [
 
         [280,0],
@@ -261,7 +255,8 @@ casillasPista.forEach(casilla => {
 
 cerrar.addEventListener("click", () => {
 
-    popup.style.display = "none";
+    popup.style.display =
+        "none";
 
 });
 
@@ -274,12 +269,16 @@ function mostrarLetras(palabra) {
 
     circulo.innerHTML = "";
 
-    palabraActual = palabra;
+    palabraActual =
+        palabra;
 
-    posicionActual = 0;
+    posicionActual =
+        0;
+
 
     const letrasDesordenadas =
         ordenLetras[numeroActual];
+
 
     const cantidad =
         letrasDesordenadas.length;
@@ -289,23 +288,35 @@ function mostrarLetras(palabra) {
         (letra, indice) => {
 
             const boton =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
+
 
             boton.textContent =
                 letra;
 
 
+            // =================================
+            // SELECCIONAR LETRA
+            // =================================
+
             boton.addEventListener(
                 "click",
                 () => {
 
-                    colocarLetra(letra);
+                    colocarLetra(
+                        letra,
+                        boton
+                    );
 
                 }
             );
 
 
-            circulo.appendChild(boton);
+            circulo.appendChild(
+                boton
+            );
 
 
             const angulo =
@@ -313,7 +324,8 @@ function mostrarLetras(palabra) {
                 indice - 90;
 
 
-            const radio = 47;
+            const radio =
+                47;
 
 
             const x =
@@ -357,10 +369,15 @@ function mostrarLetras(palabra) {
 // COLOCAR LETRA
 // =====================================
 
-function colocarLetra(letra) {
+function colocarLetra(
+    letra,
+    boton
+) {
 
     if (!palabraActual) {
+
         return;
+
     }
 
 
@@ -413,7 +430,9 @@ function colocarLetra(letra) {
 
 
     if (!posicion) {
+
         return;
+
     }
 
 
@@ -435,11 +454,15 @@ function colocarLetra(letra) {
         casilla => {
 
             if (
+
                 casilla.style.top ===
-                `${top}px` &&
+                `${top}px`
+
+                &&
 
                 casilla.style.left ===
                 `${left}px`
+
             ) {
 
                 casilla.textContent =
@@ -453,6 +476,13 @@ function colocarLetra(letra) {
 
         }
     );
+
+
+    // =================================
+    // ELIMINAR LETRA
+    // =================================
+
+    boton.remove();
 
 
     posicionActual++;
